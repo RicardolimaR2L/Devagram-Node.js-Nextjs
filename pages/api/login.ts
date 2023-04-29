@@ -1,8 +1,12 @@
 import type {NextApiRequest, NextApiResponse} from 'next';
+import { conectarMongoDB } from '../../middlewares/conectarMongoDB';
 
-export default (
+import type { RespostaPadraoMsg } from '../../types/RespostaPadraoMsg'; 
+//impotçao do padrao de resposta
+
+const endpointLogin = (
 req : NextApiRequest,
-res : NextApiResponse
+res : NextApiResponse<RespostaPadraoMsg>
 ) => {
 if( req.method === "POST" ){
   const {login, senha} = req.body;
@@ -14,10 +18,15 @@ if( req.method === "POST" ){
  // validaçao das informações de login
 
         
-      res.status(200).json({msg: 'Usuario autenticado com sucesso'})
+     return res.status(200).json({msg : 'Usuario autenticado com sucesso'})
         //mensagem de sucesso(caso as informaçoes estejam corretas)
       } 
-         return res.status(405).json({erro: 'Usuário ou senha não encontrado'})
-      }
+      return res.status(405).json({erro: 'Usuário ou senha não encontrado'})
+    }
         return res.status(405).json({erro: 'metodo informado não é válido'}) 
-} 
+        //mensagem de erro caso as informaçoes nao estejam corretas
+
+      } 
+
+export default conectarMongoDB(endpointLogin);
+//adiçao do middleware ao endpoint
