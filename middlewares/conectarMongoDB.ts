@@ -24,7 +24,7 @@ async (req: NextApiRequest, res: NextApiResponse<RespostaPadraoMsg>) => {
     }
     mongoose.connection.on('connected', () => console.log('Banco de dados conectado'));
   
-    mongoose.connection.on('error', error => console.log(`ocorreu um erro aoconectar no banco: ${error}`));
+    mongoose.connection.on('error', error => console.log(`ocorreu um erro ao conectar no banco: ${error}`));
   
     await mongoose.connect(DB_CONEXAO_STRING);
     

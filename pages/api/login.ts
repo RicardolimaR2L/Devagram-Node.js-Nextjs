@@ -2,7 +2,7 @@ import type {NextApiRequest, NextApiResponse} from 'next';
 import { conectarMongoDB } from '../../middlewares/conectarMongoDB';
 
 import type { RespostaPadraoMsg } from '../../types/RespostaPadraoMsg'; 
-//impotçao do padrao de resposta
+//importaçao do padrao de resposta
 
 const endpointLogin = (
 req : NextApiRequest,
