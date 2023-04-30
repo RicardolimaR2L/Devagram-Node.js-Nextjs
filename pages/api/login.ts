@@ -15,7 +15,7 @@ if( req.method === "POST" ){
 
   if( login === 'admin@admin.com' && 
        senha === 'admin@123'){
- // validaçao das informações de login
+ // validação das informações de login
 
         
      return res.status(200).json({msg : 'Usuario autenticado com sucesso'})
