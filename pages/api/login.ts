@@ -15,7 +15,6 @@ const {MINHA_CHAVE_JWT} = process.env;
 if(!MINHA_CHAVE_JWT){
  return res.status(500).json({erro: 'Env jwt não informada'})
 }
-console.log(MINHA_CHAVE_JWT)
 if( req.method === "POST" ){
   const {login, senha} = req.body;
  // Validaçaõ do method
