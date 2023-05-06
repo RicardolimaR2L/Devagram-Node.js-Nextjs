@@ -24,20 +24,15 @@ const usuarioEncontrados = await UsuarioModel.find({email: login,senha:md5(senha
  
     const usuarioEncontrado = usuarioEncontrados[0];
  
+    //validação das informações de login
    const token  = jwt.sign({_id: usuarioEncontrado._id}, MINHA_CHAVE_JWT);
- // validaçao das informações de login 
-
-
- 
  return res.status(200).json({
    nome : usuarioEncontrado.nome, 
    email : usuarioEncontrado.email,
     token });
-
- // validação das informações de login
-
-        //mensagem de sucesso(caso as informaçoes estejam corretas)
-      } 
+    //mensagem de sucesso(caso as informaçoes estejam corretas)
+    
+  } 
       return res.status(405).json({erro: 'Usuário ou senha não encontrado'})
     }
         return res.status(405).json({erro: 'metodo informado não é válido'}) 
