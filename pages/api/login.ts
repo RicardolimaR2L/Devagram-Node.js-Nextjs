@@ -15,6 +15,7 @@ const {MINHA_CHAVE_JWT} = process.env;
 if(!MINHA_CHAVE_JWT){
  return res.status(500).json({erro: 'Env jwt não informada'})
 }
+console.log(MINHA_CHAVE_JWT)
 if( req.method === "POST" ){
   const {login, senha} = req.body;
  // Validaçaõ do method
@@ -34,9 +35,6 @@ const usuarioEncontrados = await UsuarioModel.find({email: login,senha:md5(senha
     token });
 
  // validação das informações de login
-
-        
-     return res.status(200).json({msg : 'Usuario autenticado com sucesso'})
 
         //mensagem de sucesso(caso as informaçoes estejam corretas)
       } 
