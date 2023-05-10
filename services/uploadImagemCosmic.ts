@@ -15,7 +15,7 @@
     //Instâcia do cosmicjs
     /*Uma instância do CosmicJS é uma implementação individual do sistema de gerenciamento de conteúdo CosmicJS*/
     const Cosmic = cosmicjs();
-
+   
   
     //Instância dos buckets 
   //Dentro dos buckets ocorre a captura das informações (SLUG,WRITE_KEY) de cada bucket. 
@@ -48,15 +48,16 @@
 
     const uploadImagemCosmic = async (req : any) => {
     //validação se na requisição chegou um arquivo, se ele tiver um nome cria um objeto. 
+  
       if(req?.file?.originalname){
 //console.log('media_object', req?.file?.originalname)
         const media_object ={
           originalname : req.file.originalname,
-          Buffer: req.file.Buffer
+          buffer: req.file.buffer
         };
 
         
-          console.log(req?.file?.originalname, '<- aqui a imagem')
+         
         //Aqui já com o objeto criado verificamos a URL e decidimos para qual bucket vai ser enviado. 
               if(req.url && req.url.includes('publicacao')){
         

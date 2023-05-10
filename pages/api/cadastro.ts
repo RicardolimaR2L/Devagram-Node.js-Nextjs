@@ -15,6 +15,7 @@ const handler = nc()
         // validação do metodo "POST"
         // dizendo que const usuario = req.body as CadastroRequisicao; 
         // vai ter os seguintes dados (Nome, Email, Senha) para serem preenchidos
+       // console.log(req.file)
 
           if(!usuario.nome || usuario.nome.length < 2 ){
             return res.status(400).json({erro : 'Nome invalido'});
