@@ -7,10 +7,12 @@ import md5 from 'md5';
 import { upload, uploadImagemCosmic } from "@/services/uploadImagemCosmic"; 
 import nc from "next-connect";
 
+
+
 const handler = nc()
     .use(upload.single('file'))
   .post(  async (req :NextApiRequest, res: NextApiResponse<RespostaPadraoMsg> )=>{
-  
+  try{
     const usuario = req.body as CadastroRequisicao;
         // validação do metodo "POST"
         // dizendo que const usuario = req.body as CadastroRequisicao; 
@@ -55,7 +57,13 @@ const handler = nc()
 
             }
               await UsuarioModel.create(UsuarioASerSalvo); 
-            return res.status(200).json({msg: 'Usuario criado com sucesso'});
+               return res.status(200).json({msg: 'Usuario criado com sucesso'});
+          }catch (e : any){
+            console.log(e)
+            return res.status(400).json({erro : e.toString()});
+            
+          }
+
   });
 
   /* Mudança na configuração do bodyParser para Multipart/form-data
