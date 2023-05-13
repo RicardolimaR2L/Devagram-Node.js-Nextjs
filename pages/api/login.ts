@@ -3,9 +3,10 @@ import { conectarMongoDB } from '../../middlewares/conectarMongoDB';
 import {UsuarioModel} from '../../models/UsuarioModel'
 import md5 from 'md5';
 import jwt from 'jsonwebtoken';
-import type { RespostaPadraoMsg } from '../../types/RespostaPadraoMsg'; 
 import type { LoginResposta } from '../../types/LoginResposta'; 
+
 //importaçao do padrao de resposta
+import type { RespostaPadraoMsg } from '../../types/RespostaPadraoMsg'; 
 
 const endpointLogin = async (
 req : NextApiRequest,
