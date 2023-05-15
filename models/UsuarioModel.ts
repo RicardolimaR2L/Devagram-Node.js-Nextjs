@@ -9,7 +9,7 @@ const UsuarioSchema = new Schema({
   seguindo:{ type : Number, default : 0},
   publicacoes:{ type : Number, default : 0},
 })
-// modelo Tabela de informacoes do usuario para Cadastro
+// modelo da Tabela de informacoes do usuario para Cadastro
 
 
 

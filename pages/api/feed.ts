@@ -12,7 +12,7 @@ const feedEndpoint = async (
     if (req.method === 'GET') {
       console.log(UsuarioModel)
       if (req?.query?.id) {
-        const usuario = await UsuarioModel.findById(req?.query?.id.trim());//Busca pelo usuario no banco de dados 
+        const usuario = await UsuarioModel.findById(req?.query?.id);//Busca pelo usuario no banco de dados 
         if (!usuario) {
           return res.status(400).json({ erro: 'usuario nao encontrado' });//msgm de erro caso o usuario nao exista
         }
