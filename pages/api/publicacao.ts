@@ -43,7 +43,7 @@ import { UsuarioModel } from '../../models/UsuarioModel';
 
             await PublicacaoModel.create(publicacao); 
 
-          res.status(200).json({erro : 'Publicação criada com sucesso'})
+          res.status(200).json({msg : 'Publicação criada com sucesso'})
         } catch (e) {
         console.log(e)
         res.status(400).json({erro : 'Erro ao cadastrar a publicação'})
