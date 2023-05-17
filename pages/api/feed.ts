@@ -4,6 +4,7 @@ import { conectarMongoDB } from '@/middlewares/conectarMongoDB';
 import { UsuarioModel } from '../../models/UsuarioModel';
 import { PublicacaoModel } from '../../models/publicacaoModel';
 
+
 const feedEndpoint = async (
   req: NextApiRequest,
   res: NextApiResponse<any>
