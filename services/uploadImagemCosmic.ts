@@ -44,16 +44,24 @@
     const upload = multer({storage : storage}) 
     /* Função de upload para receber a imagem, indicando qual 
     o storage que deve ser usado para salvar a imagem  */
-
+  
+    
 
     const uploadImagemCosmic = async (req : any) => {
-    //validação se na requisição chegou um arquivo, se ele tiver um nome cria um objeto. 
+    //validação se na requisição chegou um arquivo, se ele tiver um nome cria um objeto do cosmic. 
   
-      if(req?.file?.originalname){
-//console.log('media_object', req?.file?.originalname)
-        const media_object ={
+      if(req?.file?.originalname){ //validação dos formatos de imagem 
+      if(!req.file.originalname.includes('.png')&&
+      !req.file.originalname.includes('.jpg')&&
+      !req.file.originalname.includes('.jpeg')){
+        throw new Error ('extensao da imagem ivalida')
+
+      };
+
+
+        const media_object ={ 
           originalname : req.file.originalname,
-          buffer: req.file.buffer
+          buffer: req.file.buffer  //buffer é um tipo de dado que armazena os conteúdos binários do arquivo.
         };
 
         
