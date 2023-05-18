@@ -18,7 +18,7 @@ const handler = nc()
       }
 
       //req.body é o corpo da requisição. é onde os dados são pegos para fazer as validações pois nele contem as informações do usuário.
-      const { nome } = req?.body
+      const { nome } = req.body.nome
       if (nome && nome.length > 2) {
         usuario.nome = nome
       }
@@ -32,17 +32,17 @@ const handler = nc()
           /*Aqui estamos enviando os bytes da imagem e transformando em um objeto do cosmic,
                 dentro desse objeto do cosmic deve ter uma URL com os dados tratados, se ele tiver a url vamos salvar o objeto  */
         }
-
-        //alterar os dados no DB
-        await UsuarioModel.findByIdAndUpdate({ _id: usuario.id }, usuario)
-
-        return res.status(200).json({ msg: 'Usuario alterado com sucesso' })
       }
+
+      //alterar os dados no DB
+      await UsuarioModel.findByIdAndUpdate({ _id: usuario._id }, usuario)
+
+      return res.status(200).json({ msg: 'Usuario alterado com sucesso' })
     } catch (e) {
       console.log(e)
       return res
         .status(400)
-        .json({ erro: 'Nao foi possivel atualizar o ususario' + e })
+        .json({ erro: 'Nao foi possivel atualizar o usuario' + e })
     }
   })
 
