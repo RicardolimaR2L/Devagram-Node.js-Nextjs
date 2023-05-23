@@ -40,6 +40,8 @@ import { UsuarioModel } from '../../models/UsuarioModel';
               foto : image.media.url,
               data : new Date()
           }
+          usuario.publicacoes++;
+          await UsuarioModel.findByIdAndUpdate({_id: usuario._id},usuario);
 
             await PublicacaoModel.create(publicacao); 
 
