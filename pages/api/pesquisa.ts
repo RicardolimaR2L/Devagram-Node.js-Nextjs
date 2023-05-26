@@ -3,6 +3,7 @@ import type { RespostaPadraoMsg } from '../../types/RespostaPadraoMsg'
 import { validarTokenJWT } from '../../middlewares/validarTokenJWT'
 import { conectarMongoDB } from '@/middlewares/conectarMongoDB'
 import { UsuarioModel } from '@/models/UsuarioModel'
+import { politicaCORS } from '@/models/politicaCors'
 
 const pesquisaEndpoint = async (
   req: NextApiRequest,
@@ -11,14 +12,14 @@ const pesquisaEndpoint = async (
   try {
     if (req.method === 'GET') {
       //valida se o metodo da requisição é ou nao Get(usado para trazer dados)
-      if (req?.query?.id) {//verifica se na requisição tem o id do usuario
-        const usuarioEncontrado = await UsuarioModel.findById(req?.query?.id)// busaca o usuario no banco pelo id e  retorna o usuario encontrado 
-        if(!usuarioEncontrado){
-          return res.status(400).json({erro: 'usuario nao encontrado'})
+      if (req?.query?.id) {
+        //verifica se na requisição tem o id do usuario
+        const usuarioEncontrado = await UsuarioModel.findById(req?.query?.id) // busaca o usuario no banco pelo id e  retorna o usuario encontrado
+        if (!usuarioEncontrado) {
+          return res.status(400).json({ erro: 'usuario nao encontrado' })
         }
-        usuarioEncontrado.senha = null//trataiva para nao mostrar a senha do usuario quando ele for encontrado
+        usuarioEncontrado.senha = null //trataiva para nao mostrar a senha do usuario quando ele for encontrado
         return res.status(200).json(usuarioEncontrado)
-
       } else {
         const { filtro } = req.query
         if (!filtro || filtro.length < 2) {
@@ -48,4 +49,4 @@ const pesquisaEndpoint = async (
   }
 }
 
-export default validarTokenJWT(conectarMongoDB(pesquisaEndpoint))
+export default politicaCORS(validarTokenJWT(conectarMongoDB(pesquisaEndpoint)))

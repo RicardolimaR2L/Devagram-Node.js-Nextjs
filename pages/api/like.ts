@@ -4,6 +4,7 @@ import { validarTokenJWT } from '../../middlewares/validarTokenJWT'
 import { conectarMongoDB } from '@/middlewares/conectarMongoDB'
 import { UsuarioModel } from '@/models/UsuarioModel'
 import { PublicacaoModel } from '@/models/publicacaoModel'
+import { politicaCORS } from '@/models/politicaCors'
 
 const likeEndpoint = async (
   req: NextApiRequest,
@@ -27,8 +28,8 @@ const likeEndpoint = async (
 
       //como vamos adiministrar os likes?
       const indexDoUsuarioNoLike = publicacao.likes.findIndex(
-        (e : any) => e.toString() === usuario._id.toString()
-        // toString converte um objeto em uma representação de string, no nosso caso estamos pegado o object id, ou seja a sequencia de numeros que compoem o ID do usuario  
+        (e: any) => e.toString() === usuario._id.toString()
+        // toString converte um objeto em uma representação de string, no nosso caso estamos pegado o object id, ou seja a sequencia de numeros que compoem o ID do usuario
       )
       //no trecho abaixo temos  o IF/ELSE funcionando como um toogle onde um clique da o like e ao clicar novamente da o deslike
 
@@ -59,4 +60,4 @@ const likeEndpoint = async (
       .json({ erro: 'ocorreu ao curtir/descurtir uma publicação' })
   }
 }
-export default validarTokenJWT(conectarMongoDB(likeEndpoint))
+export default politicaCORS(validarTokenJWT(conectarMongoDB(likeEndpoint)))

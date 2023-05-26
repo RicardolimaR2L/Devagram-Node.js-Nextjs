@@ -3,9 +3,10 @@ import type{ RespostaPadraoMsg} from '../../types/RespostaPadraoMsg'
 import type{CadastroRequisicao} from '../../types/CadastroRequisicao'  
 import {UsuarioModel} from '../../models/UsuarioModel'
 import { conectarMongoDB } from "@/middlewares/conectarMongoDB";
-import md5 from 'md5'; 
+import md5 from 'md5'
 import { upload, uploadImagemCosmic } from "@/services/uploadImagemCosmic"; 
 import nc from "next-connect";
+import { politicaCORS } from "@/models/politicaCors";
 
 
 
@@ -74,4 +75,4 @@ const handler = nc()
     }
   }
 
-export default conectarMongoDB(handler);
+export default politicaCORS(conectarMongoDB(handler));
