@@ -22,7 +22,7 @@ const pesquisaEndpoint = async (
         return res.status(200).json(usuarioEncontrado)
       } else {
         const { filtro } = req.query
-        if (!filtro || filtro.length <= 2) {
+        if (!filtro || filtro.length < 2) {
           //valida se a busca tem no minimo dois caracteres
           return res.status(400).json({
             erro: 'Favor informar pelo menos 2 caracteres para a busca'
