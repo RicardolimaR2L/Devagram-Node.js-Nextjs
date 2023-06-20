@@ -27,12 +27,12 @@ const endpointLogin = async (
 
       //validação das informações de login
       const token = jwt.sign({ _id: usuarioEncontrado._id }, MINHA_CHAVE_JWT)
+      //mensagem de sucesso(caso as informaçoes estejam corretas)
       return res.status(200).json({
         nome: usuarioEncontrado.nome,
         email: usuarioEncontrado.email,
         token
       })
-      //mensagem de sucesso(caso as informaçoes estejam corretas)
     }
     return res.status(405).json({ erro: 'Usuário ou senha não encontrado' })
   }
