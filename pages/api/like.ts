@@ -4,7 +4,7 @@ import { validarTokenJWT } from '../../middlewares/validarTokenJWT'
 import { conectarMongoDB } from '@/middlewares/conectarMongoDB'
 import { UsuarioModel } from '@/models/UsuarioModel'
 import { PublicacaoModel } from '@/models/publicacaoModel'
-import { politicaCORS } from '@/models/politicaCors'
+import { politicaCORS } from '@/middlewares/politicaCors'
 
 const likeEndpoint = async (
   req: NextApiRequest,

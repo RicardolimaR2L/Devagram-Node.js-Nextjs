@@ -4,7 +4,7 @@ import { conectarMongoDB } from '@/middlewares/conectarMongoDB'
 import { RespostaPadraoMsg } from '@/types/RespostaPadraoMsg'
 import { UsuarioModel } from '@/models/UsuarioModel'
 import { seguidorModel } from '@/models/seguidorModel'
-import { politicaCORS } from '@/models/politicaCors'
+import { politicaCORS } from '@/middlewares/politicaCors'
 const seguirEndPoint = async (
   req: NextApiRequest,
   res: NextApiResponse<RespostaPadraoMsg>

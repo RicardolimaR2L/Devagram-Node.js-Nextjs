@@ -6,7 +6,7 @@ import jwt from 'jsonwebtoken'
 import type { LoginResposta } from '../../types/LoginResposta'
 //importaçao do padrao de resposta
 import type { RespostaPadraoMsg } from '../../types/RespostaPadraoMsg'
-import { politicaCORS } from '@/models/politicaCors'
+import { politicaCORS } from '@/middlewares/politicaCors'
 const endpointLogin = async (
   req: NextApiRequest,
   res: NextApiResponse<RespostaPadraoMsg | LoginResposta>
