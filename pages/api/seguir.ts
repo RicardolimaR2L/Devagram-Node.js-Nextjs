@@ -37,7 +37,10 @@ const seguirEndPoint = async (
         usuarioId: usuarioLogado._id,
         usuarioSeguidoId: usuarioASerSeguido._id
       })
-      if (euJaSigoEsseUsuario && euJaSigoEsseUsuario.length > 0) {
+      if (
+        (euJaSigoEsseUsuario && euJaSigoEsseUsuario.length > 0) ||
+        euJaSigoEsseUsuario.length > 0
+      ) {
         // sinal que eu ja sigo esse usuario
         euJaSigoEsseUsuario.forEach(
           async (e: any) =>
