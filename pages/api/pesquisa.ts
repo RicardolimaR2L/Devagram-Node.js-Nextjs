@@ -39,8 +39,8 @@ const pesquisaEndpoint = async (
         }
         return res.status(200).json(user)
       } else {
-        const { filtro } = req.query
-        if (!filtro || filtro.length < 2) {
+        const { filter } = req.query
+        if (!filter || filter.length < 2) {
           return res.status(400).json({
             erro: 'Favor informar pelo menos 2 caracteres para a busca'
           })
@@ -48,8 +48,8 @@ const pesquisaEndpoint = async (
 
         const usuariosEncontrados = await UsuarioModel.find({
           $or: [
-            { nome: { $regex: filtro, $options: 'i' } }
-            //{ email : {$regex : filtro, $options: 'i'}}
+            { nome: { $regex: filter, $options: 'i' } }
+            //{ email : {$regex : filter, $options: 'i'}}
           ]
         })
 
