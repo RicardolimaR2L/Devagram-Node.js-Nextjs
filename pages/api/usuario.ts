@@ -12,7 +12,8 @@ const handler = nc()
   .put(async (req: any, res: NextApiResponse<RespostaPadraoMsg>) => {
     try {
       //req.query
-      const { UserId } = req?.query
+      const{ UserId } = req?.query
+      console.log(UserId)
       const usuario = await UsuarioModel.findById(UserId)
       if (!usuario) {
         return res.status(400).json({ erro: 'Usuario nao encontrado' })
