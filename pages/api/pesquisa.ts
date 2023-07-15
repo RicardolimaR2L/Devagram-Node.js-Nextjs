@@ -34,9 +34,8 @@ const pesquisaEndpoint = async (
           usuarioId: req?.query?.id,
           usuarioSeguidoId: usuarioEncontrado._id
         })
-        if (segueEsseUsuario || segueEsseUsuario !== 'true') {
+        if (segueEsseUsuario && segueEsseUsuario.length > 0) {
           user.segueEsseUsuario = true
-          console.log('logs do req.query ' ,  req?.query?.id)
         }
         return res.status(200).json(user)
       } else {
