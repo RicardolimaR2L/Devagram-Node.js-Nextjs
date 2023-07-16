@@ -34,7 +34,7 @@ const pesquisaEndpoint = async (
           usuarioId: req?.query?.id,
           usuarioSeguidoId: usuarioEncontrado._id
         })
-        if (segueEsseUsuario && segueEsseUsuario.length >=1  ) {
+        if (segueEsseUsuario && segueEsseUsuario.length >=0 ) {
           user.segueEsseUsuario = true
          
 
