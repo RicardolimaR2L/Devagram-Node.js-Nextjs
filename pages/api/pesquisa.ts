@@ -29,18 +29,22 @@ const pesquisaEndpoint = async (
           seguindo: usuarioEncontrado.seguindo,
           publicacoes: usuarioEncontrado.publicacoes
         } as any
-        //const novoFiltro = req.query.userId 
-        const segueEsseUsuario = await seguidorModel.find({ usuarioId: req?.query?.userId, usuarioSeguidoId: usuarioEncontrado._id });
-        if (segueEsseUsuario && segueEsseUsuario.length >=1) {
-            user.segueEsseUsuario = true;
+        //const novoFiltro = req.query.userId
+        const segueEsseUsuario = await seguidorModel.find({
+          usuarioId: req?.query?.UserId,
+          usuarioSeguidoId: usuarioEncontrado._id
+        })
+        if (segueEsseUsuario && segueEsseUsuario.length > 0) {
+          user.segueEsseUsuario = true
         }
-        return res.status(200).json(user);
-    } else {
-        const { filtro } = req.query;
+        return res.status(200).json(user)
+      } else {
+        const { filtro } = req.query
         if (!filtro || filtro.length < 2) {
-            return res.status(400).json({ erro: 'Favor informar pelo menos 2 caracteres para a busca' });
+          return res.status(400).json({
+            erro: 'Favor informar pelo menos 2 caracteres para a busca'
+          })
         }
-
         const usuariosEncontrados = await UsuarioModel.find({
           $or: [
             { nome: { $regex: filtro, $options: 'i' } }
