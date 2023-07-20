@@ -9,7 +9,6 @@ import { politicaCORS } from '@/middlewares/politicaCors'
 const feedEndpoint = async (req: NextApiRequest, res: NextApiResponse<any>) => {
   try {
     if (req.method === 'GET') {
-      console.log(UsuarioModel)
       if (req?.query?.id) {
         const usuario = await UsuarioModel.findById(req?.query?.id) //Busca pelo usuario no banco de dados
         if (!usuario) {
