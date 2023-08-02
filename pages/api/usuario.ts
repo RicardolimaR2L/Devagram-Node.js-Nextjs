@@ -12,7 +12,7 @@ const handler = nc()
   .put(async (req: any, res: NextApiResponse<RespostaPadraoMsg>) => {
     try {
       //req.query
-      const{ UserId } = req?.query
+      const { UserId } = req?.query
       console.log(UserId)
       const usuario = await UsuarioModel.findById(UserId)
       if (!usuario) {
@@ -20,7 +20,7 @@ const handler = nc()
       }
 
       //req.body é o corpo da requisição. é onde os dados são pegos para fazer as validações pois nele contem as informações do usuário.
-      const { nome } = req.body.nome
+      const { nome } = req.body
       if (nome && nome.length > 2) {
         usuario.nome = nome
       }
