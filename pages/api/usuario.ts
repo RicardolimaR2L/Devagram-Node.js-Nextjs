@@ -29,7 +29,7 @@ const handler = nc()
       if (file && file.originalname) {
         const image = await uploadImagemCosmic(req)
         if (image && image.media.url) {
-          usuario.file = image.media.url
+          usuario.avatar = image.media.url
 
           /*Aqui estamos enviando os bytes da imagem e transformando em um objeto do cosmic,
                 dentro desse objeto do cosmic deve ter uma URL com os dados tratados, se ele tiver a url vamos salvar o objeto  */
