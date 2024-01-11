@@ -46,7 +46,7 @@ const comentarioEndpoint = async (
     console.log(e)
     return res
       .status(500)
-      .json({ erro: 'Ocorreu erro ao adiconar o comentario' })
+      .json({ erro: 'Ocorreu um erro ao adicionar o comentário.' })
   }
 }
 
